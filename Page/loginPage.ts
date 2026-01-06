@@ -18,7 +18,7 @@ export class LoginPage {
         this.loginTab= page.locator(`//div[@class='seven columns offset-by-one desktop']//a[@id='customer_login_link']`);
         this.usernameInput = page.locator('#customer_email');
         this.passwordInput = page.locator('#customer_password');
-        this.submitButton = page.locator(`(//input[@value='Sign In'])[1]`);
+        this.submitButton = page.locator(`//input[@value='Sign In']`);
         this.forgotPassword= page.locator(`//a[normalize-space()='Forgot your password?']`);
         this.errorMessage = page.locator("(//li[normalize-space()='Incorrect email or password.'])[1]");
     }

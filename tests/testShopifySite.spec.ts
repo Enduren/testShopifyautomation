@@ -11,6 +11,9 @@ test.describe('test shopify site', () => {
     /*
         https://www.saucedemo.com/
         https://parabank.parasoft.com/parabank/login.htm
+        https://rahulshettyacademy.com/
+
+        https://qasummit.org/previous-events
     
     
     */
@@ -21,9 +24,10 @@ test.describe('test shopify site', () => {
   })
 
     test('Negative Scenario for login', async ({ page }) => {
-        //check all menu tabs
-        await loginPage.login("username@example.com","invalid password")
+        //check all menu tabs  dtennison79@gmail.com  ChangeMe2SDET
+        await loginPage.login("dtennison79@gmail.com ","ChangeMe2SDET")
         await page.waitForTimeout(6000)
+        await page.pause()
         // await loginPage.assertErrorMessageVisible()
     })
     
