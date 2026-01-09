@@ -10,10 +10,15 @@ test.describe('test shopify site', () => {
 
     /*
         https://www.saucedemo.com/
+
         https://parabank.parasoft.com/parabank/login.htm
+
         https://rahulshettyacademy.com/
+
         https://sauce-demo.myshopify.com/
 
+        https://ultimateqa.com/automation
+        
         https://qasummit.org/previous-events
     
     
