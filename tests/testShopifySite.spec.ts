@@ -3,6 +3,7 @@ import { LoginPage } from '../Page/loginPage';
 import { AboutPage } from '../Page/aboutUsPage';
 import { HomePage } from '../Page/homePage';
 import { AddProducts } from '../Page/addProducts';
+import { CartPage } from '../Page/cartPage';
 
 
 
@@ -12,6 +13,7 @@ test.describe('test shopify site', () => {
     let aboutPage: AboutPage
     let homePage: HomePage
     let addProducts: AddProducts
+    let cartPage: CartPage
 
 
     /*
@@ -36,10 +38,17 @@ test.describe('test shopify site', () => {
 
   })
 
-    test('Negative Scenario for login', async ({ page }) => {
+    test('E2E of all menu tabs', async ({ page }) => {
         //check all menu tabs  dtennison79@gmail.com  ChangeMe2SDET
         await loginPage.login()
+        addProducts=new AddProducts(page)
+        await addProducts.addAllProductsToCart()
+        cartPage=new CartPage(page)
+        await cartPage.navigateToCart()
+        await cartPage.assertProductsInCart()
+
         await page.waitForTimeout(6000)
+
         aboutPage=new AboutPage(page)
         await aboutPage.navigateToAboutUs()
         await aboutPage.assertAboutUsPage()
