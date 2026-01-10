@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../Page/loginPage';
 import { AboutPage } from '../Page/aboutUsPage';
-import { HomePage } from '../Page/homePage';
 import { AddProducts } from '../Page/addProducts';
 import { CartPage } from '../Page/cartPage';
 
@@ -9,46 +8,37 @@ import { CartPage } from '../Page/cartPage';
 
 test.describe('test shopify site', () => {
 
+    //Page Object Model instances
     let loginPage: LoginPage
     let aboutPage: AboutPage
-    let homePage: HomePage
     let addProducts: AddProducts
     let cartPage: CartPage
 
 
-    /*
-        https://www.saucedemo.com/
-
-        https://parabank.parasoft.com/parabank/login.htm
-
-        https://rahulshettyacademy.com/
-
-        https://sauce-demo.myshopify.com/
-
-        https://ultimateqa.com/automation
-        
-        https://qasummit.org/previous-events
-    
-    
-    */
-
+   
     test.beforeEach(async ({ page }) => {
-    loginPage=new LoginPage(page)
-    loginPage.visit()  
+        //Navigate to site
+        loginPage=new LoginPage(page)
+        loginPage.visit()  
 
-  })
+    })
 
     test('E2E of all menu tabs', async ({ page }) => {
-        //check all menu tabs  dtennison79@gmail.com  ChangeMe2SDET
+        //Login to site
         await loginPage.login()
+
+        //Add products to cart
         addProducts=new AddProducts(page)
         await addProducts.addAllProductsToCart()
+
+        //Go to cart and verify products are added
         cartPage=new CartPage(page)
         await cartPage.navigateToCart()
         await cartPage.assertProductsInCart()
 
         await page.waitForTimeout(6000)
 
+        //Navigate to about us page
         aboutPage=new AboutPage(page)
         await aboutPage.navigateToAboutUs()
         await aboutPage.assertAboutUsPage()
