@@ -12,6 +12,7 @@ export class LoginPage {
     readonly forgotPassword: Locator;
     readonly errorMessage: Locator;
 
+    // Initialize selectors
     constructor(page:Page) {
         this.page = page;
         // Using specific selectors for better reliability
@@ -23,10 +24,12 @@ export class LoginPage {
     }
 
 
+    // Navigate to the login page
     async visit() {
         await this.page.goto("https://www.saucedemo.com/")
     }
 
+    // Perform login action
      async login() {
         // Use the locator objects directly to perform actions
         const userData = JSON.parse(fs.readFileSync('userLogin.json', 'utf8'));
@@ -36,6 +39,7 @@ export class LoginPage {
         await this.submitButton.click();
     }
 
+    // Assert that the error message is visible
     async assertErrorMessageVisible() {
         // Assertions should target the locator directly
         await expect(this.errorMessage).toBeVisible();

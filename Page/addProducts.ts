@@ -1,6 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
 
 export class AddProducts {
+    // Define Selectors
     readonly page: Page;  
     readonly addSauceBackpack: Locator;
     readonly addSauceBikeLight: Locator 
@@ -9,6 +10,7 @@ export class AddProducts {
     readonly addSauceOnesie: Locator
     readonly addSauceRedTShirt: Locator     
 
+    // Initialize selectors
     constructor(page:Page) {
         this.page = page;
         this.addSauceBackpack = page.locator('#add-to-cart-sauce-labs-backpack');
@@ -18,6 +20,8 @@ export class AddProducts {
         this.addSauceOnesie = page.locator('#add-to-cart-sauce-labs-onesie');
         this.addSauceRedTShirt = page.locator('[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]');        
     }   
+    
+    // Add all products to the cart
     async addAllProductsToCart() {
         await this.addSauceBackpack.click();
         await this.addSauceBikeLight.click();

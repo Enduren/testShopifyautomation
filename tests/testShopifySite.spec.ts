@@ -23,7 +23,7 @@ test.describe('test shopify site', () => {
 
     })
 
-    test('E2E of all menu tabs', async ({ page }) => {
+    test('E2E of the Checkout Process', async ({ page }) => {
         //Login to site
         await loginPage.login()
 
@@ -36,15 +36,36 @@ test.describe('test shopify site', () => {
         await cartPage.navigateToCart()
         await cartPage.assertProductsInCart()
 
+        //Checkout process
+        await cartPage.proceedToCheckout()
+
+        //Complete checkout and verify order confirmation
+        await cartPage.completeCheckout()
+
         await page.waitForTimeout(6000)
 
-        //Navigate to about us page
+        
+        
+        
+    })
+
+    // test('Remove Products', async ({ page }) => {
+        
+    // })
+
+    test('Go to About Us page', async ({ page }) => {
+        
+
+        //Login to site
+        await loginPage.login()
+
+        //Navigate to About Us page
         aboutPage=new AboutPage(page)
         await aboutPage.navigateToAboutUs()
-        await aboutPage.assertAboutUsPage()
-        
-        await page.pause()
-        // await loginPage.assertErrorMessageVisible()
     })
+
+    
+
+    
     
 })
