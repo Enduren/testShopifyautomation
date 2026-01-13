@@ -49,9 +49,24 @@ test.describe('test shopify site', () => {
         
     })
 
-    // test('Remove Products', async ({ page }) => {
+    test('Remove Products', async ({ page }) => {
         
-    // })
+        //Login to site
+        await loginPage.login()
+
+        //Add products to cart
+        addProducts=new AddProducts(page)
+        await addProducts.addAllProductsToCart()
+
+        //Go to cart and verify products are added
+        cartPage=new CartPage(page)
+        await cartPage.navigateToCart()
+        await cartPage.assertProductsInCart()
+
+        //Remove products from cart and verify
+        await cartPage.removeAllItemsFromCart()
+        
+    })
 
     test('Go to About Us page', async ({ page }) => {
         
