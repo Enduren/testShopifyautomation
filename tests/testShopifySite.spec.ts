@@ -43,9 +43,6 @@ test.describe('test shopify site', () => {
         await cartPage.completeCheckout()
 
         await page.waitForTimeout(6000)
-
-        
-        
         
     })
 
@@ -68,9 +65,17 @@ test.describe('test shopify site', () => {
         
     })
 
+    test('Login with invalid credentials', async ({ page }) => {
+        
+        //Perform login with invalid credentials
+        await loginPage.loginWithInvalidCredentials()   
+
+        //Assert error message is visible
+        await loginPage.assertErrorMessageVisible()
+    })
+
     test('Go to About Us page', async ({ page }) => {
         
-
         //Login to site
         await loginPage.login()
 

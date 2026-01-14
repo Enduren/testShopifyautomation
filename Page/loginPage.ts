@@ -9,8 +9,8 @@ export class LoginPage {
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
     readonly submitButton: Locator;
-    readonly forgotPassword: Locator;
     readonly errorMessage: Locator;
+    readonly logoutButton: Locator;
 
     // Initialize selectors
     constructor(page:Page) {
@@ -19,8 +19,8 @@ export class LoginPage {
         this.usernameInput = page.locator('#user-name');
         this.passwordInput = page.locator('#password');
         this.submitButton = page.locator(`#login-button`);
-        this.forgotPassword= page.locator(`//a[normalize-space()='Forgot your password?']`);
-        this.errorMessage = page.locator("(//li[normalize-space()='Incorrect email or password.'])[1]");
+        this.errorMessage = page.locator("h3[data-test='error']");
+        this.logoutButton = page.locator('#logout_sidebar_link');
     }
 
 
@@ -39,9 +39,31 @@ export class LoginPage {
         await this.submitButton.click();
     }
 
+    //asert error message for invalid login
+    async assertErrorMessage() {
+        // Assertions should target the locator directly
+        await expect(this.errorMessage).toBeVisible();
+    }
+
+    // Perform login with invalid credentials
+    async loginWithInvalidCredentials() {
+        const userData = JSON.parse(fs.readFileSync('userLogin.json', 'utf8'));;
+        
+        await this.usernameInput.fill(userData.username);
+        await this.passwordInput.fill(userData.passworderror);
+        await this.submitButton.click();
+    }
+
+
     // Assert that the error message is visible
     async assertErrorMessageVisible() {
         // Assertions should target the locator directly
         await expect(this.errorMessage).toBeVisible();
+
+
+    }
+    // Perform logout action
+    async logout() {
+        await this.logoutButton.click();
     }
 }
