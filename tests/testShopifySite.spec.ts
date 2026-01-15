@@ -84,6 +84,16 @@ test.describe('test shopify site', () => {
         await aboutPage.navigateToAboutUs()
     })
 
+    test('LogOut', async ({ page }) => {
+        
+        //Login to site
+        await loginPage.login()
+
+        //Log out from site
+        await loginPage.logout()
+    })
+    
+
     
 
     
