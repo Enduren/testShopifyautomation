@@ -82,12 +82,22 @@ test.describe('test shopify site', () => {
         //Navigate to About Us page
         aboutPage=new AboutPage(page)
         await aboutPage.navigateToAboutUs()
+
+        //Assert About Us page is displayed
+        await aboutPage.assertAboutUsPage()
+
+        //Verify About Us page content
+        await aboutPage.verifyAboutUsContent()
     })
 
     test('LogOut', async ({ page }) => {
         
         //Login to site
         await loginPage.login()
+
+        //Navigate to About Us page
+        aboutPage=new AboutPage(page)
+        await aboutPage.clickMenuButton()
 
         //Log out from site
         await loginPage.logout()

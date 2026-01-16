@@ -21,8 +21,33 @@ export class AboutPage {
         // await this.page.waitForNavigation()
     }
 
+    //click on menu button
+    async clickMenuButton() {
+        await this.menuButton.click();
+    }
+
     // Assert that the About Us page is displayed
     async assertAboutUsPage() {
         await expect(this.page).toHaveURL(/.*saucelabs.com/);
+    }
+
+    //verify About Us page content
+    async verifyAboutUsContent() {
+        const expectedMenuItems = [
+            'Products',
+            'Sauce AI',
+            'Solutions',
+            'Pricing',
+            'Developers',
+            'Resources',
+        ];
+
+        // Get the full text content from the container
+        const pageContent = await this.page.locator('div.MuiStack-root.css-19diydd').textContent();
+
+        // Loop through each item and ensure it exists within that text
+        for (const item of expectedMenuItems) {
+            await expect(pageContent).toContain(item);
+        }
     }
 }

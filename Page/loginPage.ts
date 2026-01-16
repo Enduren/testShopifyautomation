@@ -60,8 +60,10 @@ export class LoginPage {
         // Assertions should target the locator directly
         await expect(this.errorMessage).toBeVisible();
 
+        
 
     }
+    
     // Perform logout action
     async logout() {
         await this.logoutButton.click();

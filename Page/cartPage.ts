@@ -82,11 +82,6 @@ export class CartPage {
         await this.postalCodeInput.fill('12345');
     }
 
-   
-    // async assertItemsInCheckoutOverview() {
-       
-    // }
-
     // Complete the checkout process and verify order confirmation
     async completeCheckout() {
         await this.continueButton.click();
