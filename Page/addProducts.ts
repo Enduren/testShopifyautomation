@@ -8,7 +8,10 @@ export class AddProducts {
     readonly addSauceBoltTShirt: Locator
     readonly addSauceFleeceJacket: Locator
     readonly addSauceOnesie: Locator
-    readonly addSauceRedTShirt: Locator     
+    readonly addSauceRedTShirt: Locator 
+    readonly twitterLink: Locator;
+    readonly facebookLink: Locator;
+    readonly linkedInLink: Locator;    
 
     // Initialize selectors
     constructor(page:Page) {
@@ -19,6 +22,9 @@ export class AddProducts {
         this.addSauceFleeceJacket = page.locator('#add-to-cart-sauce-labs-fleece-jacket');
         this.addSauceOnesie = page.locator('#add-to-cart-sauce-labs-onesie');
         this.addSauceRedTShirt = page.locator('[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]');        
+        this.twitterLink = page.locator(`//a[normalize-space()='Twitter']`);
+        this.facebookLink = page.locator(`//a[normalize-space()='Facebook']`);
+        this.linkedInLink = page.locator(`//a[normalize-space()='LinkedIn']`);
     }   
     
     // Add all products to the cart
@@ -29,5 +35,11 @@ export class AddProducts {
         await this.addSauceFleeceJacket.click();
         await this.addSauceOnesie.click();
         await this.addSauceRedTShirt.click();        
+    }
+    // Verify social media links are visible
+    async verifySocialMediaLinks() {
+        await expect(this.twitterLink).toBeVisible();
+        await expect(this.facebookLink).toBeVisible();
+        await expect(this.linkedInLink).toBeVisible();
     }
 }
