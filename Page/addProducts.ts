@@ -26,6 +26,22 @@ export class AddProducts {
         this.facebookLink = page.locator(`//a[normalize-space()='Facebook']`);
         this.linkedInLink = page.locator(`//a[normalize-space()='LinkedIn']`);
     }   
+
+     // Assert that all added products are present
+    async  checkProducts() {
+            const expectedItems = [
+                'Sauce Labs Backpack',
+                'Sauce Labs Bike Light',
+                'Sauce Labs Bolt T-Shirt',
+                'Sauce Labs Fleece Jacket',
+                'Sauce Labs Onesie',
+                'Test.allTheThings() T-Shirt (Red)'
+            ];
+
+            for (const item of expectedItems) {
+                await expect(this.page.locator(`//div[normalize-space()='${item}']`)).toBeVisible();
+            }
+    }
     
     // Add all products to the cart
     async addAllProductsToCart() {

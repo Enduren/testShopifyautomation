@@ -30,6 +30,9 @@ test.describe('test shopify site', () => {
          //Verify social media links are visible
         addProducts=new AddProducts(page)
         await addProducts.verifySocialMediaLinks()
+
+        //check products are visible
+        await addProducts.checkProducts()
         
         //Add products to cart
         addProducts=new AddProducts(page)
