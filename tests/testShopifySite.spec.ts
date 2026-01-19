@@ -31,6 +31,9 @@ test.describe('test shopify site', () => {
         addProducts=new AddProducts(page)
         await addProducts.verifySocialMediaLinks()
 
+        //Verify footer copyright text
+        await addProducts.verifyFooterCopyright()
+
         //check products are visible
         await addProducts.checkProducts()
         

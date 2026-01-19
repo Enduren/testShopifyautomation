@@ -11,7 +11,8 @@ export class AddProducts {
     readonly addSauceRedTShirt: Locator 
     readonly twitterLink: Locator;
     readonly facebookLink: Locator;
-    readonly linkedInLink: Locator;    
+    readonly linkedInLink: Locator;   
+    readonly footerCopyright: Locator; 
 
     // Initialize selectors
     constructor(page:Page) {
@@ -24,7 +25,8 @@ export class AddProducts {
         this.addSauceRedTShirt = page.locator('[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]');        
         this.twitterLink = page.locator(`//a[normalize-space()='Twitter']`);
         this.facebookLink = page.locator(`//a[normalize-space()='Facebook']`);
-        this.linkedInLink = page.locator(`//a[normalize-space()='LinkedIn']`);
+        this.linkedInLink = page.locator(`//a[normalize-space()='LinkedIn']`);  
+        this.footerCopyright = page.locator('.footer_copy');
     }   
 
      // Assert that all added products are present
@@ -57,5 +59,10 @@ export class AddProducts {
         await expect(this.twitterLink).toBeVisible();
         await expect(this.facebookLink).toBeVisible();
         await expect(this.linkedInLink).toBeVisible();
+    }
+
+    // Verify footer copyright text
+    async verifyFooterCopyright() {
+        await expect(this.footerCopyright).toBeVisible();
     }
 }
