@@ -19,6 +19,7 @@ export class CartPage {
     readonly shoppingCartLink: Locator;
     readonly cancelButton: Locator;
     readonly inventoryContainer: Locator;
+    readonly backHomeBtn: Locator;
 
     // Initialize selectors
     constructor(page: Page) {
@@ -39,6 +40,8 @@ export class CartPage {
         this.shoppingCartLink = page.locator('.shopping_cart_link');
         this.cancelButton = page.locator('#cancel');
         this.inventoryContainer = page.locator('.inventory_list');
+        this.backHomeBtn = page.locator('#back-to-products');
+
 
     }
 
@@ -102,6 +105,11 @@ export class CartPage {
 
         await this.finishButton.click();
         await expect(this.orderConfirmationMessage).toHaveText('Thank you for your order!');
+    }
+
+    //check for back to home button
+    async backToHome() {
+        await expect(this.backHomeButton).toBeVisible();
     }
 
 }

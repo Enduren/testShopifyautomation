@@ -50,4 +50,22 @@ export class AboutPage {
             await expect(pageContent).toContain(item);
         }
     }
+
+    async checkBottomLinks () {
+
+        const expectedBottomLinks = [
+            'Products',
+            'Platform for Test',
+            'Global Tools',       
+            'Set up and integrate',
+            'Resources',
+            'Company',
+
+        ];
+
+        const bottomLinks = await this.page.locator('div.MuiStack-root.css-19diydd').locator('a').all();
+        for (const link of bottomLinks) {
+            await expect(link).toBeVisible();
+        }
+    }
 }
