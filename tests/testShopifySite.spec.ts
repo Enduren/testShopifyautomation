@@ -61,6 +61,9 @@ test.describe('test shopify site', () => {
         //Login to site
         await loginPage.login()
 
+        //Take screenshot after login
+        await expect(page).toHaveScreenshot({ fullPage: true});
+
         //Add products to cart
         addProducts=new AddProducts(page)
         await addProducts.addAllProductsToCart()
@@ -92,6 +95,8 @@ test.describe('test shopify site', () => {
         //Navigate to About Us page
         aboutPage=new AboutPage(page)
         await aboutPage.navigateToAboutUs()
+
+        await page.waitForTimeout(5000)
 
         //Assert About Us page is displayed
         await aboutPage.assertAboutUsPage()
