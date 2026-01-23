@@ -3,7 +3,7 @@ import { LoginPage } from '../Page/loginPage';
 import { AboutPage } from '../Page/aboutUsPage';
 import { AddProducts } from '../Page/addProducts';
 import { CartPage } from '../Page/cartPage';
-
+import {AxeBuilder} from '@axe-core/playwright';
 
 
 test.describe('test shopify site', () => {
@@ -27,7 +27,15 @@ test.describe('test shopify site', () => {
         //Login to site
         await loginPage.login()
 
-         //Verify social media links are visible
+        //Accessibility check using axe-core
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+        // Log accessibility violations to the console
+        console.log(accessibilityScanResults.violations);
+        console.log(`Number of accessibility violations: ${accessibilityScanResults.violations.length}`);
+        // expect(accessibilityScanResults.violations).toEqual([]);
+
+        //Verify social media links are visible
         addProducts=new AddProducts(page)
         await addProducts.verifySocialMediaLinks()
 
