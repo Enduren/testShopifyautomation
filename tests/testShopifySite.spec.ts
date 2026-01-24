@@ -111,6 +111,14 @@ test.describe('test shopify site', () => {
 
         //Verify About Us page content
         await aboutPage.verifyAboutUsContent()
+
+        //Accessibility check using axe-core
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+        // Log accessibility violations to the console
+        console.log(accessibilityScanResults.violations);
+        console.log(`Number of accessibility violations: ${accessibilityScanResults.violations.length}`);
+        // expect(accessibilityScanResults.violations).toEqual([]);
     })
 
     test('LogOut', async ({ page }) => {
