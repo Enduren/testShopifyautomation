@@ -6,12 +6,15 @@ export class AboutPage {
     readonly page: Page;
     readonly menuButton: Locator;
     readonly aboutUsLink: Locator;
+    readonly productsLink: Locator; 
+    
     
    // Initialize selectors 
     constructor(page:Page) {
             this.page = page;
             this.aboutUsLink = page.locator('[data-test="about-sidebar-link"]');
             this.menuButton = page.locator('#react-burger-menu-btn');
+            this.productsLink = page.locator('//*[@id="__next"]/header/div/div/div[1]/div[2]/div[1]/div[1]/div[1]/span');
     }
 
     // Navigate to About Us page
@@ -67,5 +70,14 @@ export class AboutPage {
         for (const link of bottomLinks) {
             await expect(link).toBeVisible();
         }
+    }
+
+    //hover on products link
+    async hoverOnProductsLink() {
+        await this.productsLink.hover();
+
+        // Verify that the dropdown menu appears
+        const dropdownMenu = this.page.locator('.MuiStack-root:nth-child(1) > .dropdown .css-1doduzn');
+        await expect(dropdownMenu).toBeVisible();
     }
 }

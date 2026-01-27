@@ -119,6 +119,9 @@ test.describe('test shopify site', () => {
         console.log(accessibilityScanResults.violations);
         console.log(`Number of accessibility violations: ${accessibilityScanResults.violations.length}`);
         // expect(accessibilityScanResults.violations).toEqual([]);
+
+        //check product after user hover over it
+        await aboutPage.hoverOnProductsLink()
     })
 
     test('LogOut', async ({ page }) => {
@@ -129,6 +132,7 @@ test.describe('test shopify site', () => {
         //Navigate to About Us page
         aboutPage=new AboutPage(page)
         await aboutPage.clickMenuButton()
+
 
         //Log out from site
         await loginPage.logout()
