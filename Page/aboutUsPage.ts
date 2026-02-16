@@ -3,10 +3,10 @@ import { expect, Locator, Page } from '@playwright/test';
 export class AboutPage {
 
     // Define Selectors
-    readonly page: Page;
-    readonly menuButton: Locator;
-    readonly aboutUsLink: Locator;
-    readonly productsLink: Locator; 
+    private readonly page: Page;
+    private readonly menuButton: Locator;
+    private readonly aboutUsLink: Locator;
+    private readonly productsLink: Locator; 
     
     
    // Initialize selectors 

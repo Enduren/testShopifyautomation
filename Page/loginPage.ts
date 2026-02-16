@@ -5,12 +5,12 @@ const fs = require('fs');
 export class LoginPage {
 
       // Define Selectors
-    readonly page: Page;
-    readonly usernameInput: Locator;
-    readonly passwordInput: Locator;
-    readonly submitButton: Locator;
-    readonly errorMessage: Locator;
-    readonly logoutButton: Locator;
+    private readonly page: Page;
+    private readonly usernameInput: Locator;
+    private readonly passwordInput: Locator;
+    private readonly submitButton: Locator;
+    private readonly errorMessage: Locator;
+    private readonly logoutButton: Locator;
 
     // Initialize selectors
     constructor(page:Page) {
@@ -47,7 +47,7 @@ export class LoginPage {
 
     // Perform login with invalid credentials
     async loginWithInvalidCredentials() {
-        const userData = JSON.parse(fs.readFileSync('userLogin.json', 'utf8'));;
+        const userData = JSON.parse(fs.readFileSync('userLogin.json', 'utf8'));
         
         await this.usernameInput.fill(userData.username);
         await this.passwordInput.fill(userData.passworderror);

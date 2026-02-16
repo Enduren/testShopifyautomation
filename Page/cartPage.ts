@@ -2,24 +2,24 @@ import { expect, Locator, Page } from '@playwright/test';
 
 export class CartPage {
     // Define Selectors
-    readonly page: Page;
-    readonly cartIcon: Locator;
-    readonly cartItem: Locator;
-    readonly removeItemButton: Locator;
-    readonly checkoutButton: Locator;
-    readonly firstNameInput: Locator;
-    readonly lastNameInput: Locator;
-    readonly postalCodeInput: Locator;
-    readonly continueButton: Locator;
-    readonly finishButton: Locator;
-    readonly orderConfirmationMessage: Locator;
-    readonly backHomeButton: Locator;
-    readonly cartBadge: Locator;
-    readonly emptyCartMessage: Locator;
-    readonly shoppingCartLink: Locator;
-    readonly cancelButton: Locator;
-    readonly inventoryContainer: Locator;
-    readonly backHomeBtn: Locator;
+    private readonly page: Page;
+    private readonly cartIcon: Locator;
+    private readonly cartItem: Locator;
+    private readonly removeItemButton: Locator;
+    private readonly checkoutButton: Locator;
+    private readonly firstNameInput: Locator;
+    private readonly lastNameInput: Locator;
+    private readonly postalCodeInput: Locator;
+    private readonly continueButton: Locator;
+    private readonly finishButton: Locator;
+    private readonly orderConfirmationMessage: Locator;
+    private readonly backHomeButton: Locator;
+    private readonly cartBadge: Locator;
+    private readonly emptyCartMessage: Locator;
+    private readonly shoppingCartLink: Locator;
+    private readonly cancelButton: Locator;
+    private readonly inventoryContainer: Locator;
+    private readonly backHomeBtn: Locator;
 
     // Initialize selectors
     constructor(page: Page) {

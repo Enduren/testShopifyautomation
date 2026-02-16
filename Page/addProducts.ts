@@ -2,17 +2,17 @@ import { expect, Locator, Page } from '@playwright/test';
 
 export class AddProducts {
     // Define Selectors
-    readonly page: Page;  
-    readonly addSauceBackpack: Locator;
-    readonly addSauceBikeLight: Locator 
-    readonly addSauceBoltTShirt: Locator
-    readonly addSauceFleeceJacket: Locator
-    readonly addSauceOnesie: Locator
-    readonly addSauceRedTShirt: Locator 
-    readonly twitterLink: Locator;
-    readonly facebookLink: Locator;
-    readonly linkedInLink: Locator;   
-    readonly footerCopyright: Locator; 
+    private readonly page: Page;  
+    private readonly addSauceBackpack: Locator;
+    private readonly addSauceBikeLight: Locator 
+    private readonly addSauceBoltTShirt: Locator
+    private readonly addSauceFleeceJacket: Locator
+    private readonly addSauceOnesie: Locator
+    private readonly addSauceRedTShirt: Locator 
+    private readonly twitterLink: Locator;
+    private readonly facebookLink: Locator;
+    private readonly linkedInLink: Locator;   
+    private readonly footerCopyright: Locator; 
 
     // Initialize selectors
     constructor(page:Page) {
