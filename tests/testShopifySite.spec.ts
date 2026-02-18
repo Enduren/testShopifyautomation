@@ -76,6 +76,14 @@ test.describe('test shopify site', () => {
         addProducts=new AddProducts(page)
         await addProducts.addAllProductsToCart()
 
+          //Accessibility check using axe-core
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+        // Log accessibility violations to the console
+        console.log(accessibilityScanResults.violations);
+        console.log(`Number of accessibility violations: ${accessibilityScanResults.violations.length}`);
+        // expect(accessibilityScanResults.violations).toEqual([]);
+
         //Go to cart and verify products are added
         cartPage=new CartPage(page)
         await cartPage.navigateToCart()
@@ -93,6 +101,14 @@ test.describe('test shopify site', () => {
 
         //Assert error message is visible
         await loginPage.assertErrorMessageVisible()
+
+        //Accessibility check using axe-core
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+        // Log accessibility violations to the console
+        console.log(accessibilityScanResults.violations);
+        console.log(`Number of accessibility violations: ${accessibilityScanResults.violations.length}`);
+        // expect(accessibilityScanResults.violations).toEqual([]);
     })
 
     test('Go to About Us page', async ({ page }) => {
