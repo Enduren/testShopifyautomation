@@ -102,6 +102,9 @@ test.describe('test shopify site', () => {
         //Assert error message is visible
         await loginPage.assertErrorMessageVisible()
 
+        //add screenshot
+        await expect(page).toHaveScreenshot({ fullPage: true});
+
         //Accessibility check using axe-core
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
