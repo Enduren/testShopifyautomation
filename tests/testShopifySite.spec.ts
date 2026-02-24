@@ -141,6 +141,8 @@ test.describe('test shopify site', () => {
 
         //check product after user hover over it
         await aboutPage.hoverOnProductsLink()
+        //add screenshot
+        await expect(page).toHaveScreenshot({ fullPage: true});
     })
 
     test('LogOut', async ({ page }) => {
