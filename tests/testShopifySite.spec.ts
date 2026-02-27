@@ -153,6 +153,8 @@ test.describe('test shopify site', () => {
         //Navigate to About Us page
         aboutPage=new AboutPage(page)
         await aboutPage.clickMenuButton()
+        //add screenshot
+        await expect(page).toHaveScreenshot({ fullPage: true});
 
 
         //Log out from site
