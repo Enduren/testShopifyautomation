@@ -38,6 +38,7 @@ test.describe('test shopify site', () => {
         //Verify social media links are visible
         addProducts=new AddProducts(page)
         await addProducts.verifySocialMediaLinks()
+         await expect(page).toHaveScreenshot({ fullPage: true});
 
         //Verify footer copyright text
         await addProducts.verifyFooterCopyright()
